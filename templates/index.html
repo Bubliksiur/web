@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bubliksiur wesbite!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            height: 100vh;
+            background-color: #F4F4F4;
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                scale: 0.2;
+            }
+
+            to {
+                opacity: 1;
+                scale: 1;
+            }
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 80px;
+            padding: 0 40px;
+        }
+
+        nav h2 {
+            color: rgb(0, 0, 0);
+            font-weight: 700;
+            margin-right: 6px;
+        }
+
+        nav ul {
+            display: flex;
+        }
+
+        nav ul li {
+            list-style: none;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #000000;
+            font-size: 16px;
+            font-weight: 600;
+            margin-right: 25px;
+            transition: color 0.2s ease;
+        }
+
+        nav ul li:hover a {
+            color: #007BFF;
+        }
+
+        nav ul li:last-child a {
+            margin: 0;
+        }
+
+        @media (max-width: 560px) {
+            nav h2 {
+                font-size: 17px;
+            }
+
+            nav ul li a {
+                margin-right: 15px;
+                font-size: 12px;
+            }
+
+            header img {
+                width: 460px;
+                height: 200px;
+            }
+        }
+
+        header {
+            text-align: center;
+            margin-top: 135px;
+        }
+
+        header img {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        header p span {
+            color: #007BFF;
+            font-weight: 600;
+        }
+
+        header p a {
+            color: #007BFF;
+            font-weight: 600;
+            text-decoration: underline;
+            transition: 0.3s;
+        }
+
+        header p a:hover {
+            color: #004186
+        }
+
+        header h1 span {
+            color: #007BFF;
+            font-weight: 600;
+            text-decoration: underline;
+        }
+
+        .icons {
+            margin: 35px;
+        }
+
+        .icons i {
+            font-size: 30px;
+            margin: 10px;
+            color: #005abb;
+            transition: 0.3s;
+        }
+
+        .icons i:hover {
+            color: #013a77;
+            transform: translateY(-7px);
+        }
+
+        header .show-more {
+            margin: 100px;
+            border: solid 2px #007BFF;
+            background-color: #ffffff00;
+            padding: 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: 0.4s;
+        }
+
+        header .show-more:hover {
+            background-color: #007BFF;
+            transform: translateY(-5px);
+        }
+
+        header .show-more:active {
+            background-color: #007bff48;
+        }
+
+        main {
+            text-align: center;
+        }
+
+        main .Projects img {
+            animation: appear linear;
+            animation-timeline: view();
+            animation-range: entry 0% cover 40%;
+            margin: 20px;
+            border: solid 2px #007BFF;
+            padding: 7px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        main .Projects img:hover {
+            background-color: #007BFF;
+        }
+
+        main .Skills {
+            margin: 55px;
+            text-align: center;
+            animation: appear linear;
+            animation-timeline: view();
+            animation-range: entry 0% cover 40%;
+        }
+
+        main .Skills i {
+            animation: appear linear;
+            animation-timeline: view();
+            animation-range: entry 0% cover 40%;
+            margin-top: 80px;
+            margin-right: 40px;
+            font-size: 40px;
+            transition: 0.3s;
+        }
+
+        main .Skills i:hover {
+            transform: translateY(-7px);
+        }
+
+        main .More .moreButton {
+            animation: appear linear;
+            animation-timeline: view();
+            animation-range: entry 0% cover 40%;
+            margin: 50px;
+            padding: 20px;
+            width: 280px;
+            border: 2px solid #007BFF;
+            cursor: pointer;
+            font-weight: 500;
+            border-radius: 3px;
+            transition: 0.3s;
+        }
+
+        main .More .moreButton:hover {
+            background-color: #007BFF;
+        }
+
+        main .More .moreButton:active {
+            background-color: #007bff65;
+        }
+
+        main .Concact textarea {
+            animation: appear linear;
+            animation-timeline: view();
+            animation-range: entry 0% cover 40%;
+            width: 800px;
+            padding: 10px;
+            border: 2px solid #007BFF;
+        }
+
+        main .Concact h3 {
+            animation: appear linear;
+            animation-timeline: view();
+            animation-range: entry 0% cover 40%;
+            margin-top: 80px;
+            margin-bottom: 20px;
+            color: #007BFF;
+        }
+
+        main .Concact input {
+            animation: appear linear;
+            animation-timeline: view();
+            animation-range: entry 0% cover 40%;
+            padding: 5px;
+            width: 150px;
+            border: 2px solid #007BFF;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 20px;
+            transition: 0.3s;
+        }
+
+        main .Concact input:hover {
+            background-color: #007BFF;
+        }
+
+        main .Concact input:active {
+            background-color: #007bff52;
+        }
+
+        @media (max-width: 400px) {
+            main .Projects img {
+                width: 325px;
+                height: 300px;
+            }
+        }
+
+        footer {
+            position: relative;
+            background: #1c1c1c;
+            padding: 80px 50px 40px;
+            margin-top: 100px;
+        }
+
+
+        footer .start p {
+            font-size: 13px;
+            width: 35%;
+        }
+
+        footer .start button {
+            background: transparent;
+            border: 1px solid #000;
+            cursor: pointer;
+            padding: 8px 20px;
+            border-radius: 100px;
+            transition: all 0.3s ease;
+        }
+
+        footer .start button:hover {
+            background-color: #fff;
+            border-color: #fff;
+        }
+
+        footer .cols {
+            display: flex;
+            align-items: start;
+        }
+
+        footer .cols .about-col {
+            flex: 3;
+        }
+
+        footer .cols .about-col h3 {
+            color: hsl(197, 96%, 28%);
+            margin-bottom: 20px;
+        }
+
+        footer .cols .about-col p {
+            color: #ccc;
+            font-size: 13px;
+        }
+
+        footer .cols .links-col {
+            flex: 3;
+        }
+
+        footer .cols .links-col h4,
+        footer .cols .news-col h4 {
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        footer .cols .links-col a {
+            display: block;
+            text-decoration: none;
+            color: #7b7b7b;
+            font-size: 14px;
+            line-height: 26px;
+            transition: color 0.3s ease;
+            width: 50px;
+        }
+
+        footer .cols .links-col a:hover {
+            color: hsl(197, 80%, 41%);
+        }
+
+        footer .cols .news-col {
+            flex: 3;
+        }
+
+        footer .cols .news-col p {
+            color: #7b7b7b;
+            font-size: 15px;
+        }
+
+        footer .cols .news-col form {
+            width: 100%;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        footer .cols .news-col form input {
+            width: 100%;
+            background: #212529;
+            border: none;
+            padding: 13px;
+            border-radius: 100px;
+            font-weight: 400;
+            font-size: 13px;
+        }
+
+        footer .cols .news-col form button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: #ffb742;
+            border: none;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            right: 0;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        footer .cols .news-col form button:hover {
+            background-color: #fb8c00;
+        }
+
+        footer .cols .news-col form button i {
+            font-size: 26px;
+        }
+
+        @media(max-width: 1100px) {
+            footer {
+                margin-top: 150px;
+            }
+
+            footer .start {
+                width: 90%;
+                left: 5%;
+                top: -20%;
+            }
+
+            footer .cols {
+                flex-wrap: wrap;
+            }
+
+            footer .cols .about-col {
+                flex-basis: 50%;
+            }
+
+            footer .cols .links-col {
+                flex-basis: 50%;
+            }
+
+            footer .cols .news-col {
+                flex-basis: 50%;
+            }
+
+        }
+
+        @media(max-width: 650px) {
+            footer .start {
+                top: -8%;
+            }
+
+            footer .start p {
+                display: none;
+            }
+
+            footer .cols .about-col {
+                flex-basis: 100%;
+                margin-bottom: 40px;
+            }
+
+            footer .cols .links-col {
+                flex-basis: 100%;
+                margin-bottom: 20px;
+            }
+
+            footer .cols .news-col {
+                flex-basis: 100%;
+            }
+
+        }
+
+        #dots {
+            font-size: 31px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav id="nav">
+        <h2>Bubliks</h2>
+        <ul>
+            <li><a href="#nav">Home</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#more">More</a></li>
+            <li><a href="#concact">Concact</a></li>
+    </nav>
+    <hr>
+    <header>
+        <h1>Hello world! I'm <span>Bubliks</span></h1>
+        <img src="{{ url_for('serve_image', filename='Bez nazwy.png') }}" alt="photo" width="560px" height="250px">
+        <p>
+            Hi everyone, I'm <span>Bubliks</span> and I <span>website developer</span>. I programming in many languages
+            you can see them in <a href="#skills">Skills</a>. <br> See more about me below!
+        </p>
+        <section class="icons">
+            <a href="https://www.instagram.com/bubliksiur/"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://github.com/Bubliksiur"><i class="fa-brands fa-github"></i></a>
+            <a href="https://x.com/KublixToJa"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://www.twitch.tv/bublix_"><i class="fa-brands fa-twitch"></i></a>
+        </section>
+
+        <a href="#projects"><button class="show-more">See more below!</button></a>
+    </header>
+
+    <main>
+        <section id="projects" class="Projects">
+            <h2>Projects</h2>
+            <a href="/firstProject"><img src="{{ url_for('serve_image', filename='test.png') }}" alt="" width="400px"
+                    height="300px"></a>
+            <a href="/secondProject"><img src="{{ url_for('serve_image', filename='test.png') }}" alt="Project2"
+                    width="400px" height="300px"></a>
+            <a href="/thirdProject"> <img src="{{ url_for('serve_image', filename='test.png') }}" alt="Project3"
+                    width="400px" height="300px"></a>
+        </section>
+
+        <section id="skills" class="Skills">
+            <h2>Skills</h2>
+            <i class="fa-brands fa-html5" style="color: #d20f0f;"></i>
+            <i class="fa-brands fa-css3-alt" style="color: #74C0FC;"></i>
+            <i class="fa-brands fa-js" style="color: #fdcb15;"></i>
+            <i class="fa-brands fa-php" style="color: #B197FC;"></i>
+            <i class="fa-brands fa-python" style="color: #74C0FC;"></i>
+            <i id="dots" class="fa-solid fa-ellipsis"></i>
+            <i class="fa-solid fa-database" style="color: #ffce1e;"></i>
+        </section>
+
+        <section id="more" class="More">
+            <h2>More</h2>
+            <a href="aboutMe.html"><button class="moreButton">Something about me</button></a>
+        </section>
+
+        <section id="concact" class="Concact">
+            <h2>Concact</h2>
+            <h3>bubliksiur@gmail.com</h3>
+            <form>
+                <textarea class="tekstarea" id="textArea" placeholder="Send me message about the service" name="message"
+                    rows="2"></textarea>
+                <br>
+                <input id="sendMessage" value="Send" type="button">
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        </div>
+
+        <div class="cols">
+            <div class="about-col">
+                <h3>Bubliks</h3>
+                <p>Website developer</p>
+            </div>
+
+            <div class="links-col">
+                <h4>Useful Links</h4>
+                <a href="#nav">Home</a>
+                <a href="#projects">Projects</a>
+                <a href="#skills">Skills</a>
+                <a href="#more">More</a>
+                <a href="#concact">Contact</a>
+            </div>
+
+            <div class="links-col">
+                <h4>Social Media</h4>
+                <a href="https://www.instagram.com/bubliksiur">Instagram</a>
+                <a href="https://twitter.com/KublixToJa">Twitter</a>
+                <a href="https://github.com/Bubliksiur">Github</a>
+                <a href="https://discord.gg/zsZ2FUUx5n">Community</a>
+            </div>
+
+        </div>
+
+        </div>
+
+    </footer>
+
+    <script>
+        const button = document.getElementById('sendMessage');
+        const textArea = document.getElementById('textArea');
+
+        let timeoutId;
+
+        button.addEventListener('click', () => {
+            textArea.value = '';
+            button.value = 'Message sent!';
+
+            if (timeoutId) clearTimeout(timeoutId);
+
+            timeoutId = setTimeout(function () {
+                button.value = 'Send';
+            }, 2000);
+        })
+
+
+    </script>
+</body>
+
+</html>

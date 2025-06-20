@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: sans-serif;
+        }
+
+        header {
+            border: 2px solid rgb(182, 182, 182);
+            margin-top: 75px;
+        }
+
+        form {
+            border: 2px solid rgb(182, 182, 182);
+            padding: 40px;
+            margin: 30px;
+        }
+
+        form input {
+            padding: 10px 25px 10px 25px;
+            width: 250px;
+        }
+
+        form input:hover {
+            background-color: #dadada;
+        }
+
+        form button {
+            padding: 10px 25px 10px 25px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        form button:hover {
+            transform: translateY(-10px);
+            background-color: #dadada;
+        }
+
+        #warning {
+            font-weight: bold;
+            font-size: 25px;
+        }
+
+
+        .back-button {
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            border: 2px solid black;
+            border-radius: 20px;
+            background: transparent;
+            padding: 8px 16px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: black;
+        }
+
+        .back-button:hover {
+            background-color: #232323;
+            color: white;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="/" class="back-button" type="button">Come back!</a>
+    <header>
+        <h1>Guess number!</h1>
+        <p>Guess a number from 1 to 100</p>
+    </header>
+    <form>
+        <input placeholder="guess the number" type="text">
+        <button id="btn" type="button">Guess</button>
+        <button type="submit">Refresh</button>
+    </form>
+    <p id="info"></p>
+    <p id="warning"></p>
+    <script>
+        const numberInput = document.querySelector('input');
+        const guessButton = document.querySelector('#btn');
+
+        const warning = document.querySelector('#warning');
+        const info = document.querySelector('#info');
+
+        let randomNumber = Math.floor(Math.random(1) * 100);
+
+        function main() {
+            const guess = Number(numberInput.value);
+            info.textContent = `previous number: ${numberInput.value}`;
+            numberInput.value = "";
+
+            if (!guess || guess < 1 || guess > 100) {
+                warning.textContent = 'Please enter a valid number between 1 and 100.';
+                return;
+            }
+
+            if (guess > randomNumber) warning.textContent = `Your number is too big`;
+            else if (guess < randomNumber) warning.textContent = `Your number is too low`;
+            else warning.textContent = `Nice! You win.`;
+
+        }
+
+        guessButton.addEventListener('click', main)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: sans-serif;
+            background-color: #232323;
+            color: white;
+        }
+
+        header h1 {
+            text-align: center;
+            margin: 30px;
+        }
+
+        .box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+        }
+
+        .box div {
+            width: 150px;
+            padding: 50px;
+            margin: 25px;
+            border: white 2px solid;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .box div:hover {
+            background-color: white;
+            color: black;
+        }
+
+        .box div:active {
+            transform: translateY(20px);
+        }
+
+        main p {
+            font-weight: bold;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        footer {
+            background-color: #161616;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 10vh;
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer p {
+            font-size: 2vh;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            border: 2px solid #dbdbdb;
+            border-radius: 12px;
+            background: transparent;
+            padding: 8px 16px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .back-button:hover {
+            background-color: #dbdbdb;
+            color: black;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="/" class="back-button" type="button">Come back!</a>
+    <header>
+        <h1>Welcome to Rock Paper Scissors game!</h1>
+    </header>
+    <main>
+        <p id="warning"></p>
+        <div class="box">
+            <div onclick="main('paper')" id="paper">Paper</div>
+            <div onclick="main('rock')" id="rock">Rock</div>
+            <div onclick="main('scissors')" id="scissors">Scissors</div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; all rights reserved</p>
+    </footer>
+
+    <script>
+        const warning = document.querySelector('#warning');
+        const paper = document.querySelector('#paper');
+        const rock = document.querySelector('#rock');
+        const scissors = document.querySelector('#scissors');
+
+        function main(playerChoice) {
+            const choices = ['paper', 'rock', 'scissors'];
+            const computerChoice = choices[Math.floor(Math.random() * 3)];
+            let result = '';
+
+            if (playerChoice === computerChoice) {
+                warning.style.color = 'yellow';
+                result = 'You draw';
+            }
+            else if (
+                playerChoice === 'paper' && computerChoice === 'rock' ||
+                playerChoice === 'rock' && computerChoice === 'scissors' ||
+                playerChoice === 'scissors' && computerChoice === 'rock'
+            ) {
+                warning.style.color = 'green';
+                result = 'You win!!';
+            } else {
+                warning.style.color = 'red';
+                result = 'You lose :(';
+            }
+
+            warning.textContent = `Your choice is ${playerChoice}, computer choice is ${computerChoice} so ${result}`;
+        }
+    </script>
+</body>
+
+</html>
